@@ -210,4 +210,4 @@ async def say(ctx):
     await ctx.send(embed=wordle_embed2(data, user, keyboard, bonus))
 
 
-bot.run('my_bot_key_here')
+bot.run('bot_key_here')
