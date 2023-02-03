@@ -16,10 +16,13 @@ async def on_ready():
 def is_non_negative(num):
     return num >= 0
 
+
 # to calculate points
 # except it doesn't calculate them correctly... yet
+# so ignore this
 def calculate_points(before, after):
     return sum(filter(is_non_negative, map(lambda x: color_dict2[x], after.values()))) - sum(filter(is_non_negative, map(lambda x: color_dict2[x], before.values())))
+
 
 # convert using a dict, apply a function, convert back
 # useful when you want to determine what's bigger, "yellow" or "green"
@@ -93,8 +96,6 @@ async def wordle2(ctx):
                 # if you're still confused draw this case on paper:
                 # secret word: EEEGGG
                 # guess: EGEEGE
-                #
-                # if you have a better idea of how to solve proper letter highlighting just text me
                 secret_temp[secret_temp.index(guess_temp[i])] = '*'
                 guess_temp[guess_temp.index(guess_temp[i])] = '*'
 
@@ -154,7 +155,8 @@ def get_emoji(color, char):
 
         if emoji is not None:
             return str(emoji)
-
+    
+    # if no emoji is found:
     return "🆘"
 
 
@@ -203,7 +205,7 @@ def wordle_embed2(data, user, keyboard, bonus):
 
 # helper command
 # I used it with hardcoded data to see how it'd be displayed
-# if you want to experiment with it too, play a round of wordle and then paste the info somewhere above
+# if you want to experiment with it too, play a round of wordle and then paste the info from the console somewhere above
 # then use the command and you should get an embed
 @bot.command()
 async def say(ctx):
